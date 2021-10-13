@@ -16,4 +16,5 @@ public interface StudentService {
 	
 	ArrayList<Student> getStudentListByName(String name);
 	
+	int insertStudent(Student s);
 }

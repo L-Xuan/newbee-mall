@@ -37,6 +37,17 @@ public class TestStudentServiceRestController {
     		return ResultGenerator.genSuccessResult(list);
     	}
     }
+    
+    @RequestMapping(value = "/studentName", method = RequestMethod.POST)
+    @ResponseBody
+    public Result insertStudent(@RequestBody Student s) {
+    	
+    	int count = studentService.insertStudent(s);
+    	if (count <= 0) {
+    		return ResultGenerator.genErrorResult(Constants.FETCH_ERROR, Constants.STUDENT_FETCH_ERROR_MESSAGE);
+    	} else {
+    		return ResultGenerator.genSuccessResult("挿入できました");
+    	}
+    }
 
-   
 }

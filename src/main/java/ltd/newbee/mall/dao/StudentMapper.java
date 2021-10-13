@@ -19,4 +19,6 @@ public interface StudentMapper {
     Long getStudentID();
     
     int insertStudent(Student s);
+    int getMaxStudentID();
+    
 }
