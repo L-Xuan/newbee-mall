@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,6 +38,17 @@ public class TestStudentServiceRestController {
     		return ResultGenerator.genSuccessResult(list);
     	}
     }
-
+    
+    @RequestMapping(value = "/students", method = RequestMethod.POST)
+    @ResponseBody
+    public Result insertStudent(@RequestBody Student s) {
+    	
+    	int count =studentService.insertStudent(s);
+    	if (count <= 0) {
+    		return ResultGenerator.genErrorResult(Constants.FETCH_ERROR, Constants.STUDENT_FETCH_ERROR_MESSAGE);
+    	} else {
+    		return ResultGenerator.genSuccessResult("挿入できました。");
+    	}
+    }
    
 }
